@@ -1,0 +1,50 @@
+.signupArea{
+    width: 30%;
+    margin: auto;
+    border: .1rem grey solid;
+    padding: 0 1vw;
+    background-color: white;
+}
+
+.title{
+    width: 100%;
+    align-items: center;
+}
+
+.signUpForm{
+    width: 100%;
+}
+
+.label{
+    width: 20%;
+    margin: 1vh 0;
+}
+
+.username{
+    width: 80%;
+    margin: 1vh 0;
+}
+
+.password{
+    width: 80%;
+    margin: 1vh 0;
+}
+
+.link {
+    padding: 0 2vw;
+}
+
+.link a{
+    text-decoration: none;
+    color: black;
+}
+
+.link a:hover{
+    color: blue;
+}
+
+.submit{
+    width: 30%;
+    float: right;
+    margin: 1vh 0;
+}
