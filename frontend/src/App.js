@@ -5,12 +5,11 @@ import { GameEngine } from 'react-game-engine';
 // ------------------------------------------------------------------------------
 // These are all of the personally added components
 import CreateGame from './components/CreateGame';
-import CharacterAction from './components/CharacterAction/characteraction';
+import User from './components/User/user';
 import './App.css';
 
 function App() {
-  const data = {height: 32, width: 32};
-  
+
   return (
     <div>
       <GameEngine
@@ -18,7 +17,8 @@ function App() {
         // systems={[MoveBox]}
         // entities={{box1:{x: 200, y: 200, renderer: <Box />}}} 
       >
-        <CharacterAction data={data}/>
+        <User />
+
       </GameEngine>
       <CreateGame />
     </div>    
