@@ -10,18 +10,16 @@ function AnimateWalk(frames) {
         
         console.log(moveDirections[direction]);
         setDirection(moveDirections[direction]);
-
-        const cycle = (step) => {
-            if (step < frames - 1) {
-                step = step + 1; 
-            } else {
-                step = 0;
-            }
-        };
         
-        setWalk(cycle);
-
-        // setWalk(step => (step < frames -1 ? step + 1 : 0));
+        setWalk( (walk) => {
+            if (walk < frames - 1) {
+                walk += 1; 
+                return walk;
+            } else {
+                walk = 0;
+                return walk;
+            }
+        });
 
     }
 
