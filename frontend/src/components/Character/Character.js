@@ -1,15 +1,17 @@
 import React from 'react';
 import Image from './Skins/c1.png';
 
-export function Character() {
+export function Character({data}) {
+    const {height, width, x, y} = data;
+
     return (
         <div style={
             {
                 backgroundImage: `url(${Image})`,
-                height: '32px',
-                width: '32px',
+                height: `${height}px`,
+                width: `${width}px`,
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: '0px 0px',
+                backgroundPosition: `-${x}px -${y}px`,
                 display: 'inline-block',
             }}>
             
