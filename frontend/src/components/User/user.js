@@ -1,25 +1,29 @@
 import React from 'react';
 import CharacterAction from '../CharacterAction/characteraction';
 import KeyTracking from '../../hooks/key-tracking';
+import AnimateWalk from '../../hooks/animate-walk';
 
 
 function User() {
     const data = {height: 32, width: 32};
-
-    const moveDirections = { up: 0, down: 1, left: 2, right: 3};
+    const {direction, walk, walking} = AnimateWalk(3); 
 
     KeyTracking( (x) => {
         x.preventDefault();
         
         const direction = x.key.replace('Arrow', '').toLowerCase();
 
-        if (moveDirections.hasOwnProperty(direction))  {
-            console.log(direction);
-        };
+        walking(direction);
+
+        // if (moveDirections.hasOwnProperty(direction))  {
+        //     console.log(direction);
+        // };
     });
 
+
+
     return (
-        <CharacterAction data={data}/>
+        <CharacterAction data={data} step={walk} direction={direction}/>
     )
 }; 
 

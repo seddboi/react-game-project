@@ -1,7 +1,7 @@
 import React from 'react';
 import Character from '../Character/Character';
 
-function CharacterAction({data, step = 0, direction = 0}) {
+function CharacterAction({data, step , direction}) {
     const {height, width} = data;
 
     return (
