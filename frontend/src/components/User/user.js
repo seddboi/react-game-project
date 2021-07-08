@@ -15,9 +15,6 @@ function User() {
 
         walking(direction);
 
-        // if (moveDirections.hasOwnProperty(direction))  {
-        //     console.log(direction);
-        // };
     });
 
 

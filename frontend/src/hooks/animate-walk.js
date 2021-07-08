@@ -8,7 +8,7 @@ function AnimateWalk(frames) {
 
     function walking(direction) {
         
-        console.log(moveDirections[direction]);
+        // console.log(moveDirections[direction]);
         setDirection(moveDirections[direction]);
         
         setWalk( (walk) => {
