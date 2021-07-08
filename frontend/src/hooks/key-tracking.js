@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 
-export default function KeyTracking(start) {
+function KeyTracking(start) {
     useEffect( () => {
         window.addEventListener('keydown', start);
         
@@ -8,3 +8,4 @@ export default function KeyTracking(start) {
     }, [start])
 };
 
+export default KeyTracking;
