@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 
-export default function CharacterMove(start) {
+export default function KeyTracking(start) {
     useEffect( () => {
         window.addEventListener('keydown', start);
         
