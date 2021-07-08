@@ -1,49 +1,82 @@
-.signupArea{
+#signup{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("./../../assets/background/pixelForestPlaceholder.jpg");
+    background-size: cover;
+}
+
+#signupArea{
     width: 30%;
     margin: auto;
     border: .1rem grey solid;
     padding: 0 1vw;
     background-color: white;
+    padding: 3vh 2vw;
+    display: flex;
+    flex-direction: column;
 }
 
-.title{
+#title{
     width: 100%;
     align-items: center;
 }
 
-.signUpForm{
+#signUpForm{
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.label{
+#signupUsername{
+    width: 100%;
+    display: flex;
+}
+
+#label{
     width: 20%;
     margin: 1vh 0;
 }
 
-.username{
+#username{
     width: 80%;
     margin: 1vh 0;
 }
 
-.password{
+#signupPassword{
+    width: 100%;
+    display: flex;
+}
+
+#password{
     width: 80%;
     margin: 1vh 0;
 }
 
-.link {
+#signupLinkBtn{
+    width: 100%;
+    display: flex;
+    padding: 1vh 0;
+}
+
+#link {
     padding: 0 2vw;
+    float: left;
+    width: 70%;
+    margin: 1vh 0;
 }
 
-.link a{
+#link a{
     text-decoration: none;
     color: black;
 }
 
-.link a:hover{
+#link a:hover{
     color: blue;
 }
 
-.submit{
+#submit{
     width: 30%;
     float: right;
     margin: 1vh 0;

@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
 
 import Signup from './components/signup/Signup';
 import Login from './components/login/Login';
+import Home from './components/Home/Home';
 
 function App() {
+    function loginUser() {
+        // for now console out username and password
+        const username = document.getElementsByClassName("username").textcontent;
+        const password = document.getElementsByClassName("password").textcontent;
+        console.log(username, password);
+    }
+
     return (
         <BrowserRouter>
             <div>
@@ -12,7 +20,10 @@ function App() {
                     <Signup />
                 </Route>
                 <Route exact path="/login">
-                    <Login />
+                    <Login loginUser={loginUser}/>
+                </Route>
+                <Route exact path="/">
+                    <Home />
                 </Route>
             </div>
         </BrowserRouter>

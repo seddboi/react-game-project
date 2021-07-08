@@ -11,16 +11,27 @@ function Signup() {
     }
 
     return (
-        <div className="signupArea">
-            <h2 className="title">Sign Up</h2>
-            <form className="signUpForm">
-                <label className="label">Username: </label>
-                <input type="text" className="username"></input>
-                <label className="label">Password: </label>
-                <input type="text" className="username"></input>
-                <p className="link"><a href="/login">Login</a></p>
-            </form>
-            <button onClick={getUserPass} className="submit">Submit</button>
+        <div id="signup">
+            <div id="signupArea">
+                <h2 id="title">Sign Up</h2>
+
+                <form id="signUpForm">
+                    <div id="signupUsername">
+                        <label id="label">Username: </label>
+                        <input type="text" id="username"></input>
+                    </div>
+
+                    <div id="signupPassword">
+                        <label id="label">Password: </label>
+                        <input type="text" id="username"></input>
+                    </div>
+
+                    <div id="signupLinkBtn">
+                        <p id="link"><a href="/login">Login</a></p>
+                        <button onClick={getUserPass} id="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

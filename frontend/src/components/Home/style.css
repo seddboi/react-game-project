@@ -1,0 +1,34 @@
+#home {
+    background-image: url("./../../assets/background/gameBackground.png");
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    flex-direction: column;
+}
+
+#gameArea {
+    min-height: 70vh;
+    width: 60vw;
+    background: white;
+    border: grey .3rem solid;
+    margin: 1vh 0;
+    background-image: url("./../../assets/background/pixelForestPlaceholder.jpg");
+}
+
+#gameInfo {
+    width: 56%;
+    background: white;
+    border: grey .3rem solid;
+    padding: 1% 2%;
+    font-size: 130%;
+}
+
+#gameInfo h3 {
+    margin: 1vh 0;
+}
+
+#gameInfo p{
+    margin: .5vh 0;
+}
