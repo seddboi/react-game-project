@@ -17,6 +17,38 @@
     background-image: url("./../../assets/background/pixelForestPlaceholder.jpg");
 }
 
+#charInfo {
+    width: 56vw;
+    margin: 1vh 0;
+    background-color: white;
+    border: grey .3rem solid;
+    padding: 2vh 2vw;
+    font-size: 120%;
+}
+
+#health{
+    width: 100%;
+    padding: 1vh 0;
+    display: flex;
+}
+
+#charHealth {
+    width: 10%;
+    text-align: center;
+}
+
+#healthBar{
+    width: 50%;
+    background-color: blue;
+    text-align: center;
+    border: grey .2rem solid;
+}
+
+#healthPercent {
+    width: 100%;
+    background-color: red;
+}
+
 #gameInfo {
     width: 56%;
     background: white;
@@ -27,8 +59,14 @@
 
 #gameInfo h3 {
     margin: 1vh 0;
+    width: 50%;
 }
 
 #gameInfo p{
     margin: .5vh 0;
+}
+
+#stopMusic{
+    float: right;
+    width: 10%;
 }

@@ -9,19 +9,18 @@ function Login({ loginUser }) {
 
                 <form id="loginForm">
                     <div id="loginUsername">
-                        <label id="label">Username: </label>
-                        <input type="text" id="username"></input>
+                        {/* <label id="label">Username: </label> */}
+                        <input type="text" id="username" className="loginInput" placeholder="Enter Username"></input>
                     </div>
 
                     <div id="loginPassword">
-                        <label id="label">Password: </label>
-                        <input type="text" id="password"></input>
+                        {/* <label id="label">Password: </label> */}
+                        <input type="text" id="password" className="loginInput" placeholder="Enter Password"></input>
                     </div>
 
                     <div id="linkSub">
-                        <p id="link"><a href="/signup">Sign Up</a></p>
-
-                        <button id="submit" onClick={() => loginUser()}>Submit</button>
+                        <button id="loginBtn" onClick={() => loginUser()}>Login</button>
+                        <p id="link">Save your game: <a href="/signup">Sign Up</a></p>
                     </div>
                 </form>
             </div>

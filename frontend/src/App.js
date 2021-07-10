@@ -6,6 +6,11 @@ import Login from './components/login/Login';
 import Home from './components/Home/Home';
 
 function App() {
+    const [backgroundAudio, setBackgroundAudio] = useState({
+        song: "",
+        playing: false,
+    })
+
     function loginUser() {
         // for now console out username and password
         const username = document.getElementsByClassName("username").textcontent;
@@ -23,7 +28,7 @@ function App() {
                     <Login loginUser={loginUser}/>
                 </Route>
                 <Route exact path="/">
-                    <Home />
+                    <Home backgroundAudio={backgroundAudio} setBackgroundAudio={setBackgroundAudio}/>
                 </Route>
             </div>
         </BrowserRouter>

@@ -13,22 +13,27 @@ function Signup() {
     return (
         <div id="signup">
             <div id="signupArea">
-                <h2 id="title">Sign Up</h2>
+                <h2 id="signupTitle">Sign Up</h2>
 
                 <form id="signUpForm">
                     <div id="signupUsername">
-                        <label id="label">Username: </label>
-                        <input type="text" id="username"></input>
+                        {/* <label id="label">Username: </label> */}
+                        <input type="text" id="username" className="signupInput" placeholder="Enter Username"></input>
                     </div>
 
                     <div id="signupPassword">
-                        <label id="label">Password: </label>
-                        <input type="text" id="username"></input>
+                        {/* <label id="label">Password: </label> */}
+                        <input type="text" id="username" className="signupInput" placeholder="Enter Password"></input>
+                    </div>
+
+                    <div id="signupEmail">
+                        <input type="text" id="email" className="signupInput" placeholder="Enter Email"></input>
                     </div>
 
                     <div id="signupLinkBtn">
-                        <p id="link"><a href="/login">Login</a></p>
-                        <button onClick={getUserPass} id="submit">Submit</button>
+                        <button onClick={getUserPass} id="signupBtn">Sign Up</button>
+                        <p className="link"><a href="/login">Login</a></p>
+                        
                     </div>
                 </form>
             </div>

@@ -15,21 +15,24 @@ body{
     align-items: center;
     background-image: url("./../../assets/background/pixelForestPlaceholder.jpg");
     background-size: cover;
+    font-size: 180%;
 }
 
 #loginArea {
-    width: 30%;
+    width: 80%;
     margin: auto;
-    border: .1rem grey solid;
-    background-color: white;
+    /* border: .1rem grey solid;
+    background-color: white; */
     padding: 3vh 2vw;
     display: flex;
     flex-direction: column;
 }
 
 #title{
-    width: 100%;
+    width: 10%;
     align-items: center;
+    background-color: rgba(255, 255, 255, .5);
+    margin-bottom: 3vh;
 }
 
 #loginForm{
@@ -45,13 +48,20 @@ body{
 }
 
 #label{
-    width: 20%;
+    width: 12%;
     margin: 1vh 0;
 }
 
 #username{
-    width: 80%;
+    width: 40%;
+}
+
+.loginInput{
     margin: 1vh 0;
+    padding: 1vh 1vw;
+    font-size: 80%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: grey .1rem solid;
 }
 
 #loginPassword{
@@ -60,34 +70,48 @@ body{
 }
 
 #password{
-    width: 80%;
-    margin: 1vh 0;
+ width: 40%;
 }
 
 #linkSub{
     width: 100%;
     display: flex;
+    flex-direction: column;
     padding: 1vh 0;
 }
 
 #link {
     padding: 0 2vw;
     float: left;
-    width: 70%;
+    width: 25%;
     margin: 1vh 0;
+    background-color: rgba(255, 255, 255, .5);
 }
 
 #link a{
     text-decoration: none;
     color: black;
+    
 }
 
 #link a:hover{
     color: blue;
 }
 
-#submit{
-    width: 30%;
-    float: right;
-    margin: 1vh 0;
+#loginBtn{
+    width: 20%;
+    padding: 1vh 0;
+    margin: 3vh 0;
+    font-size: 80%;
+    background-color: rgba(255, 255, 255, .6);
+    border: grey .1rem solid;
+}
+
+#loginBtn:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, .8);
+}
+
+#loginBtn:active {
+    background-color: rgba(255, 255, 255, .5);
 }
