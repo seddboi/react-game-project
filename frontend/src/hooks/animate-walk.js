@@ -2,28 +2,51 @@ import {useState} from 'react';
 
 function AnimateWalk(frames) {
    const [direction, setDirection] = useState(0);
-   const [walk, setWalk] = useState(0); 
-
    const moveDirections = { down: 0, left: 1, right: 2, up: 3};
 
-    function walking(direction) {
-        
-        // console.log(moveDirections[direction]);
-        setDirection(moveDirections[direction]);
-        
-        setWalk( (walk) => {
-            if (walk < frames - 1) {
-                walk += 1; 
-                return walk;
+   const [animation, setAnimation] = useState(0); 
+
+   const [position, setPosition] = useState({x:0, y:0});
+   const pixelsLandscape = 20;
+   const pixelsPortrait = 16;
+   const adjustPosition = {
+       down: {x: 0, y: pixelsPortrait},
+       left: {x: -pixelsLandscape, y: 0},
+       right: {x: pixelsLandscape, y: 0},
+       up: {x: 0, y: -pixelsPortrait},
+   };
+
+    function walkingAnimation(direction) {    
+        setAnimation( (animation) => {
+            if (animation < frames - 1) {
+                animation += 1; 
+                return animation;
             } else {
-                walk = 0;
-                return walk;
+                animation = 0;
+                return animation;
             }
         });
 
-    }
+        setDirection((vector) => {
+            // console.log('setDirection is triggering');
+            // console.log(moveDirections[direction] === vector);
+            if (moveDirections[direction] === vector) move(direction)
 
-    return {walking, direction, walk, moveDirections}
+            return moveDirections[direction]
+        });
+    };
+
+    function move(direction) {
+        // console.log('move() is triggering')
+        setPosition( (vector) => ({
+            x: vector.x + adjustPosition[direction].x,
+            y: vector.y + adjustPosition[direction].y,
+
+        }));
+    };
+    // console.log(move(direction));
+
+    return {walkingAnimation, direction, animation, position}
 
 };
 

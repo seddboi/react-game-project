@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from './Skins/c1.png';
 
-export function Character({data}) {
+export function Character({data, position}) {
     const {height, width, x, y} = data;
 
     return (
@@ -12,7 +12,9 @@ export function Character({data}) {
                 width: `${width}px`,
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: `-${x}px -${y}px`,
-                display: 'inline-block',
+                position: 'absolute',
+                top: position.y, 
+                left: position.x,
             }}>
             
         </div>

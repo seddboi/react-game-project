@@ -6,21 +6,21 @@ import AnimateWalk from '../../hooks/animate-walk';
 
 function User() {
     const data = {height: 32, width: 32};
-    const {direction, walk, walking} = AnimateWalk(3); 
+    const {walkingAnimation, direction, animation, position} = AnimateWalk(3); 
 
     KeyTracking( (x) => {
         x.preventDefault();
         
         const direction = x.key.replace('Arrow', '').toLowerCase();
 
-        walking(direction);
+        walkingAnimation(direction);
 
     });
 
 
 
     return (
-        <CharacterAction data={data} step={walk} direction={direction}/>
+        <CharacterAction data={data} animation={animation} direction={direction} position={position}/>
     )
 }; 
 
