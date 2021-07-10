@@ -1,32 +1,47 @@
-import React from 'react';
+import React, {useState} from "react";
+import Axios from "axios";
 import './style.css';
 
-function Login({ loginUser }) {
+export default function Login(){
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+
+const [loginStatus, setLoginStatus] = useState("");
+
+const login = () => {
+    Axios.post("http://localhost:3001/api/users/login", {
+      email: email,
+      password: password,
+    }).then((response) => {
+      if (response.data.message) {
+        setLoginStatus(response.data.message);
+      } else {
+        setLoginStatus(response.data[0].username);
+      }
+    });
+  };
+
     return(
-        <div id="login">
-            <div id="loginArea">
-                <h2 id="title">Login</h2>
+        <div className="login">
+        <h1>Login</h1>
+        <input
+          type="text"
+          placeholder="Email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+        <input
+          type="password"
+          placeholder="Password..."
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+        <button onClick={login}> Login </button>
 
-                <form id="loginForm">
-                    <div id="loginUsername">
-                        <label id="label">Username: </label>
-                        <input type="text" id="username"></input>
-                    </div>
-
-                    <div id="loginPassword">
-                        <label id="label">Password: </label>
-                        <input type="text" id="password"></input>
-                    </div>
-
-                    <div id="linkSub">
-                        <p id="link"><a href="/signup">Sign Up</a></p>
-
-                        <button id="submit" onClick={() => loginUser()}>Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+        <h1>{loginStatus}</h1>
+      </div>
     )
 }
 
-export default Login;
