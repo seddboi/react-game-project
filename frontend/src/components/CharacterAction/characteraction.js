@@ -3,7 +3,7 @@ import Character from '../Character/Character';
 
 function CharacterAction({data, position={x: 0, y: 0}, animation , direction}) {
     const {height, width} = data;
-    console.log(position);
+    //console.log(position);
     return (
         <div>
             <Character data = {
