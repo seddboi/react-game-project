@@ -1,6 +1,6 @@
 const MoveBox = (entities, { input }) => {
   
-    const { payload } = input.find(x => x.name === "onMouseDown") || {};
+    const { payload } = input.find(x => x.name === "onKeyPress") || {};
   
     if (payload) {
       const box1 = entities["box1"];

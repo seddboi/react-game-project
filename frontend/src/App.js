@@ -1,6 +1,6 @@
 import React from 'react';
+// import Matter from 'matter-js';
 import { GameEngine } from 'react-game-engine';
-// import { Box } from './components/Renderings(engine)/renderers';
 // import { MoveBox } from './components/Systems(engine)/systems';
 // ------------------------------------------------------------------------------
 // These are all of the personally added components
@@ -14,10 +14,9 @@ function App() {
     <div>
       <GameEngine
         style={{width: 500, height: 500, backgroundColor: "green"}}
-        // systems={[MoveBox]}
-        // entities={{box1:{x: 200, y: 200, renderer: <Box />}}} 
+        // systems={{MoveBox}}
+        entities={{box1:{x: 32, y: 32, renderer: <User />}}} 
       >
-        <User />
 
       </GameEngine>
       <CreateGame />

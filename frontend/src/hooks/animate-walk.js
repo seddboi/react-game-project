@@ -7,13 +7,12 @@ function AnimateWalk(frames) {
    const [animation, setAnimation] = useState(0); 
 
    const [position, setPosition] = useState({x:0, y:0});
-   const pixelsLandscape = 20;
-   const pixelsPortrait = 16;
+   const pixels = 16;
    const adjustPosition = {
-       down: {x: 0, y: pixelsPortrait},
-       left: {x: -pixelsLandscape, y: 0},
-       right: {x: pixelsLandscape, y: 0},
-       up: {x: 0, y: -pixelsPortrait},
+       down: {x: 0, y: pixels},
+       left: {x: -pixels, y: 0},
+       right: {x: pixels, y: 0},
+       up: {x: 0, y: -pixels},
    };
 
     function walkingAnimation(direction) {    
