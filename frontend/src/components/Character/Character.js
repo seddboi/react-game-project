@@ -5,7 +5,7 @@ export function Character({data, position}) {
     const {height, width, x, y} = data;
 
     return (
-        <div style={
+        <div className='character' style={
             {
                 backgroundImage: `url(${Image})`,
                 height: `${height}px`,

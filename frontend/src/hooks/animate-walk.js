@@ -6,8 +6,8 @@ function AnimateWalk(frames) {
 
    const [animation, setAnimation] = useState(0); 
 
-   const [position, setPosition] = useState({x:0, y:0});
-   const pixels = 16;
+   const [position, setPosition] = useState({x:240, y:240});
+   const pixels = 10;
    const adjustPosition = {
        down: {x: 0, y: pixels},
        left: {x: -pixels, y: 0},
@@ -27,8 +27,8 @@ function AnimateWalk(frames) {
         });
 
         setDirection((vector) => {
-            // console.log('setDirection is triggering');
-            // console.log(moveDirections[direction] === vector);
+            // "vector" is the same as direction being passed below; just passes 'left', 'right' , etc.
+            // console.log(vector);
             if (moveDirections[direction] === vector) move(direction)
 
             return moveDirections[direction]
@@ -36,11 +36,14 @@ function AnimateWalk(frames) {
     };
 
     function move(direction) {
-        // console.log('move() is triggering')
+        console.log(position);
+        if (position.x < 50 || position.x > 420 || position.y < 70 || position.y > 405) {
+            return position
+        }
         setPosition( (vector) => ({
             x: vector.x + adjustPosition[direction].x,
             y: vector.y + adjustPosition[direction].y,
-
+    
         }));
     };
     // console.log(move(direction));

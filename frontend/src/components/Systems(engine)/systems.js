@@ -13,3 +13,7 @@
 //   };
   
 //   export { MoveBox };
+
+const createWalls = (entities, {input}) => {
+
+};
