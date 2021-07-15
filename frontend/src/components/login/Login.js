@@ -1,31 +1,80 @@
-import React from 'react';
+import React, {useState} from "react";
+import Axios from "axios";
+import { useHistory } from "react-router-dom";
 import './style.css';
 
-function Login({ loginUser }) {
-    return(
-        <div id="login">
-            <div id="loginArea">
-                <h2 id="title">Login</h2>
+export default function Login(){
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-                <form id="loginForm">
-                    <div id="loginUsername">
-                        {/* <label id="label">Username: </label> */}
-                        <input type="text" id="username" className="loginInput" placeholder="Enter Username"></input>
-                    </div>
+  const [loginStatus, setLoginStatus] = useState("");
+  const [valid, setValid] = useState(true);
 
-                    <div id="loginPassword">
-                        {/* <label id="label">Password: </label> */}
-                        <input type="text" id="password" className="loginInput" placeholder="Enter Password"></input>
-                    </div>
+  let history = useHistory();
 
-                    <div id="linkSub">
-                        <button id="loginBtn" onClick={() => loginUser()}>Login</button>
-                        <p id="link">Save your game: <a href="/signup">Sign Up</a></p>
-                    </div>
-                </form>
-            </div>
-        </div>
-    )
+  const login = async() => {
+    await Axios.post("http://localhost:3001/api/users/login", {
+      email: email,
+      password: password,
+    }).then((response) => {
+      // console.log(response)
+      if(response.status === 200){
+        history.push('/')
+      }
+    //   // if (response.data.message) {
+    //   //   console.log(response.data.message)
+    //   //   console.log("correct")
+    //   //   setLoginStatus(response.data.message);
+    //   // } else {
+    //   //   console.log("wrong")
+    //   //   setLoginStatus(response.data[0].username);
+    //   // }
+    })
+    .catch(err => {
+      console.log(err.response)
+    });
+  };
+
+  const validate = () => {
+    if(!valid){
+      return(
+      <p id="invalidMessage">Incorrect email or password, please try again</p>
+      )
+    }
+  }
+
+  return(
+    <div className="login">
+      
+      <div id="loginArea">
+        <h1>Login</h1>
+        {validate()}
+
+        <input
+          type="text"
+          placeholder="Email"
+          className="loginInput"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+        />
+
+        <input
+          type="password"
+          placeholder="Password..."
+          className="loginInput"
+          onChange={(e) => {
+            setPassword(e.target.value);
+            // console.log(e.target.value)
+          }}
+        />
+
+        <button className="loginBtn customBtn" onClick={login}> Login </button>
+
+        <a className="signupLink" href="/signup"><p className="link">Sign Up</p></a>
+      </div>
+
+      <h1>{loginStatus}</h1>
+    </div>
+  )
 }
-
-export default Login;

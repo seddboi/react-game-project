@@ -32,21 +32,39 @@
     display: flex;
 }
 
-#charHealth {
+#energy {
+    width: 100%;
+    padding: 1vh 0;
+    display: flex;
+}
+
+.charStat {
     width: 10%;
     text-align: center;
 }
 
-#healthBar{
+.statBar {
     width: 50%;
-    background-color: blue;
+    /* background-color: blue; */
     text-align: center;
     border: grey .2rem solid;
+    position: relative;
 }
 
-#healthPercent {
+.statPercent{
     width: 100%;
     background-color: red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.percent{
+    position: absolute;
+    width: 100%;
+    top: -20%;
+    font-size: 100%;
 }
 
 #gameInfo {

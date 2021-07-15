@@ -1,44 +1,90 @@
-import React from 'react';
-import './style.css';
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import Axios from "axios";
+import "./style.css";
 
-function Signup() {
-    const getUserPass = (e) =>{ // get username text and password text "still needs work"
-        e.preventDefault();
-        const username = document.getElementsByClassName("username");
-        const password = document.getElementsByClassName("password");
+export default function Signup() {
+  const [usernameReg, setUsernameReg] = useState("");
+  const [passwordReg, setPasswordReg] = useState("");
+  const [emailReg, setEmailReg] = useState("");
 
-        console.log(`Username is ${username} and password is ${password}`)
+  const [loginStatus, setLoginStatus] = useState("");
+  const [valid, setValid] = useState(true)
+
+  Axios.defaults.withCredentials = true;
+
+  let history = useHistory();
+
+  const register = async () => {
+      await Axios.post("http://localhost:3001/api/users/register", {
+      username: usernameReg,
+      email: emailReg,
+      password: passwordReg,
+    }).then((response) => {
+      if(response.status === 200){
+        history.push('/login')
+      }
+      // console.log(response)
+    }).catch(err => {
+      setValid(false)
+      // console.log(err)
+    });
+  };
+
+  const validate = () => {
+    if(!valid){
+      return(
+      <p id="invalidMessage">Invalid Email or Password</p>
+      )
     }
+  }
 
-    return (
-        <div id="signup">
-            <div id="signupArea">
-                <h2 id="signupTitle">Sign Up</h2>
+  useEffect(() => {
+    Axios.get("http://localhost:3001/api/users/login").then((response) => {
+      if (response.data.loggedIn === true) {
+        setLoginStatus(response.data.user[0].username);
+      }
+    });
+  }, []);
 
-                <form id="signUpForm">
-                    <div id="signupUsername">
-                        {/* <label id="label">Username: </label> */}
-                        <input type="text" id="username" className="signupInput" placeholder="Enter Username"></input>
-                    </div>
+  return (
+    <div className="register">
+      <div className="signupArea">
+        <h1>Registration</h1>
+        {validate()}
 
-                    <div id="signupPassword">
-                        {/* <label id="label">Password: </label> */}
-                        <input type="text" id="username" className="signupInput" placeholder="Enter Password"></input>
-                    </div>
+        <input
+          type="text"
+          placeholder="Username"
+          className="signupInput"
+          onChange={(e) => {
+            setUsernameReg(e.target.value);
+          }}
+        />
 
-                    <div id="signupEmail">
-                        <input type="text" id="email" className="signupInput" placeholder="Enter Email"></input>
-                    </div>
+        <input
+          type="text"
+          placeholder="Email"
+          className="signupInput"
+          onChange={(e) => {
+            setEmailReg(e.target.value);
+          }}
+        />
 
-                    <div id="signupLinkBtn">
-                        <button onClick={getUserPass} id="signupBtn">Sign Up</button>
-                        <p className="link"><a href="/login">Login</a></p>
-                        
-                    </div>
-                </form>
-            </div>
-        </div>
-    )
+        <input
+          type="text"
+          placeholder="Password"
+          className="signupInput"
+          onChange={(e) => {
+            setPasswordReg(e.target.value);
+          }}
+        />
+
+        <button className="signupBtn customBtn" onClick={register}> Register </button>
+        <a className="loginLink" href="/login"><p className="link">Login</p></a>
+      </div>
+
+      <h1>{loginStatus}</h1>
+    </div>
+  );
 }
-
-export default Signup;
