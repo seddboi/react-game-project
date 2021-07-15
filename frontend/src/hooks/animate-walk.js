@@ -30,7 +30,7 @@ function AnimateWalk(frames) {
         setDirection((vector) => {
             // "vector" is the same as direction being passed below; just passes 'left', 'right' , etc.
             console.log(vector);
-            // console.log(direction)
+             console.log(direction)
             console.log(moveDirections[direction])
             if (moveDirections[direction] !== vector) move(direction);
             // if (moveDirections[direction] !== vector) {
