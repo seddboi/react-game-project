@@ -41,7 +41,7 @@ function App() {
         className='map'
         style={{width: 500, height: 500, backgroundImage: `url(${Image})`, position: 'relative'}}
         // systems={[Walls]}
-        entities={{box1:{x: 32, y: 32, renderer: <User />}}} 
+        entities={{character1:{x: 32, y: 32, renderer: <User />}, enemy1: {x: 32, y: 32}}} 
         
       >
         

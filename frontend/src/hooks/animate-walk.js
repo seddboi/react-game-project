@@ -13,6 +13,7 @@ function AnimateWalk(frames) {
        left: {x: -pixels, y: 0},
        right: {x: pixels, y: 0},
        up: {x: 0, y: -pixels},
+       shift: {x: 0, y: 0},
    };
 
     function walkingAnimation(direction) {    
@@ -28,6 +29,7 @@ function AnimateWalk(frames) {
 
         setDirection((vector) => {
             // "vector" is the same as direction being passed below; just passes 'left', 'right' , etc.
+            // console.log(moveDirections[direction])
             // console.log(vector);
             if (moveDirections[direction] === vector) move(direction)
 
@@ -35,16 +37,38 @@ function AnimateWalk(frames) {
         });
     };
 
-    function move(direction) {
-        console.log(position);
-        if (position.x < 50 || position.x > 420 || position.y < 70 || position.y > 405) {
-            return position
+    function move(passedDirection) {
+        // console.log(moveDirections[passedDirection])
+        // console.log(direction)
+        // if (position.x < 50 || position.x > 420 || position.y < 70 || position.y > 405) {
+        //     return position
+        // }
+        // console.log(moveDirections[passedDirection] !== direction)
+        if(position.y > 410) {
+            setPosition({...position, y: 410})
         }
-        setPosition( (vector) => ({
-            x: vector.x + adjustPosition[direction].x,
-            y: vector.y + adjustPosition[direction].y,
-    
-        }));
+        if(position.y < 70) {
+            setPosition({...position, y: 70})
+        }
+        if(position.x > 420) {
+            setPosition({...position, x: 420})
+        }
+        if(position.x < 50) {
+            setPosition({...position, x: 50})
+        }
+        if (moveDirections[passedDirection] !== direction) {
+            setPosition( (vector) => ({
+                x: vector.x + 0,
+                y: vector.y + 0,
+            }))}
+        else {
+            setPosition( (vector) => ({
+                x: vector.x + adjustPosition[passedDirection].x,
+                y: vector.y + adjustPosition[passedDirection].y,
+        
+            }));
+        }
+        // console.log(position);
     };
     // console.log(move(direction));
 
