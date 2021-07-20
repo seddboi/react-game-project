@@ -17,6 +17,75 @@
     background-image: url("./../../assets/background/pixelForestPlaceholder.jpg");
 }
 
+#charInfo {
+    width: 56vw;
+    margin: 1vh 0;
+    background-color: white;
+    border: grey .3rem solid;
+    padding: 2vh 2vw;
+    font-size: 120%;
+}
+
+#health{
+    width: 100%;
+    padding: 1vh 0;
+    display: flex;
+}
+
+#energy {
+    width: 100%;
+    padding: 1vh 0;
+    display: flex;
+}
+
+.charStat {
+    width: 10%;
+    text-align: center;
+}
+
+.statBar {
+    width: 50%;
+    /* background-color: blue; */
+    text-align: center;
+    border: grey .2rem solid;
+    position: relative;
+}
+
+.statPercent{
+    width: 100%;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.percent{
+    position: absolute;
+    width: 100%;
+    top: -20%;
+    font-size: 100%;
+}
+
+#weapon {
+    width: 100%;
+    display: flex;
+}
+
+#charWeapon {
+    width: 25%;
+    padding: 1vh 0;
+}
+
+#weaponInfo {
+    width: 75%;
+    padding: 0 1vw;
+}
+
+#weaponInfo p {
+    padding: 1vh 0;
+}
+
 #gameInfo {
     width: 56%;
     background: white;
@@ -25,10 +94,31 @@
     font-size: 130%;
 }
 
+#gameBtn {
+    width: fit-content;
+}
+
+#gameBtn button {
+    padding: 0 1vw;
+    margin: 0 .5vw;
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 100%;
+}
+
+#gameBtn button:hover {
+    cursor: pointer;
+}
+
 #gameInfo h3 {
     margin: 1vh 0;
+    width: 50%;
 }
 
 #gameInfo p{
     margin: .5vh 0;
+}
+
+#stopMusic{
+    float: right;
+    width: 10%;
 }

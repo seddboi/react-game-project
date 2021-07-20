@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+:root {
+    --text-color: white;
+}
+
+body{
+    background-color: rgb(180, 142, 93);
+    font-family: 'DotGothic16', sans-serif;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.customBtn{
+    padding: 1vh 0;
+    background-color: rgba(255, 255, 255, .6);
+    border: grey .1rem solid;
+    font-size: 130%;
+    font-family: 'DotGothic16', sans-serif;
+    padding: 1vh 0;
+}
+
+.customBtn:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, .8);
+}
+
+.customBtn:active{
+    background-color: rgba(255, 255, 255, .6);
+}

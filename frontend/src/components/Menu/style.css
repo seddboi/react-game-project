@@ -1,0 +1,57 @@
+#menu {
+    width: 100%;
+    height: 98vh;
+    padding: 1vh 0;
+    background-image: url("./../../assets/background/gameBackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#menu h2 {
+    width: 50%;
+    margin: auto;
+    font-size: 200%;
+    padding: 1vh 0;
+    color: var(--text-color)
+}
+
+#btns {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 3vh 0;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+#topBtn {
+    width: 100%;
+    padding: 5vh 0;
+}
+
+#bottomBtn {
+    width: 100%;
+    padding: 10vh 0;
+}
+
+.menuBtn {
+    width: 40%;
+}
+
+#newBtn {
+    float: left;
+}
+
+#resumeBtn {
+    float: right;
+}
+
+#setBtn {
+    float: left;
+}
+
+#creditBtn {
+    float: right;
+}
