@@ -1,7 +1,11 @@
+
+
 {
+  
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
+    "concurrently": "^6.2.0",
     "connect-session-sequelize": "^7.1.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -9,5 +13,8 @@
     "express-session": "^1.17.2",
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.5"
-  }
+  }, 
+  "scripts": {"server": "node server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm start\" \"npm run server\""}
 }
