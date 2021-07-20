@@ -3,9 +3,10 @@ import React from 'react';
 import { GameEngine } from 'react-game-engine';
 // ------------------------------------------------------------------------------
 // These are all of the personally added components
-import CreateGame from './components/CreateGame';
+// import CreateGame from './components/CreateGame';
 import User from './components/User/user';
 import Image from './components/Map/arena-files/arena1.png'
+import Enemy from './components/EnemyContainer/enemycontainer'
 // import Walls from './hooks/create-walls';
 import './App.css';
 
@@ -41,14 +42,17 @@ function App() {
         className='map'
         style={{width: 500, height: 500, backgroundImage: `url(${Image})`, position: 'relative'}}
         // systems={[Walls]}
-        entities={{character1:{x: 32, y: 32, renderer: <User />}, enemy1: {x: 32, y: 32}}} 
+        entities={{character1:{x: 32, y: 32, renderer: <User />}, enemy1: {x:32, y:32, renderer: <Enemy />}, enemy2: {x:32, y:32, renderer: <Enemy />}, enemy3: {x:32, y:32, renderer: <Enemy />}}}
         
       >
-        
+        {/* <Enemy />  */}
       </GameEngine>
-      <CreateGame />
+      {/* <CreateGame /> */}
     </div>    
   );
 }
 
 export default App;
+
+// {},
+//},

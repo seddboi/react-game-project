@@ -1,12 +1,39 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
-function AnimateWalk(frames) {
+function AutomateWalk(frames) {
    const [direction, setDirection] = useState(0);
    const moveDirections = { down: 0, left: 1, right: 2, up: 3};
 
    const [animation, setAnimation] = useState(0); 
 
-   const [position, setPosition] = useState({x:240, y:240});
+    // ________________________________________________________________________________-
+    // Our attempt with this is to randomize the positon of the entitiy so we can render multiple without having to hard code a different starting position for every entity
+   // this works when we have a position set in useState e.g. const [position, setPosition] = useState({x:200, y: 200}) and comment out useEffect line 29-31
+    // there is an error when we plug the 'random position' function into useState on the line below, 
+    // which states that the 'Uncaught TypeError: Cannot read property 'y' of undefined
+    // at move (automate-walk.js:75)
+    // at automate-walk.js:62'
+   const [position, setPosition] = useState();
+  
+   function randomPosition() {
+        var minX = 50;
+        var maxX= 420;
+        var minY = 70;
+        var maxY= 410;
+
+        const px = Math.floor(Math.random() * (maxX - minX) + minX)
+        const py = Math.floor(Math.random() * (maxY - minY) + minY)
+        console.log(px, py)
+        
+        setPosition({x:px, y:py});
+        //return;
+   };
+
+   useEffect(() => {
+        randomPosition();
+    }, [])
+    // ________________________________________________________________________________-
+
    const pixels = 10;
    const adjustPosition = {
        down: {x: 0, y: pixels},
@@ -15,6 +42,7 @@ function AnimateWalk(frames) {
        up: {x: 0, y: -pixels},
        shift: {x: 0, y: 0},
    };
+   
 
 //    console.log(direction);
     // console.log(animation);
@@ -79,4 +107,4 @@ function AnimateWalk(frames) {
 
 };
 
-export default AnimateWalk;
+export default AutomateWalk;
