@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,  } from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
@@ -6,33 +6,12 @@ import "./style.css";
 
 import music from "./../../assets/music/2019-06-14_-_Warm_Light_-_David_Fesliyan.mp3";
 
-function Home({ loggedIn }) {
+function Home({ loggedIn, character, weapons, currentHealth, setCurrentHealth }) {
     const testAudio = new Audio(music);
-    const [character, setCharacter] = useState({
-        name: "User",
-        xp: 1000,
-        level: 2,
-        maxHealth: 100,
-        currentHealth: 75,
-        maxEnergy: 100,
-        currentEnergy: 85,
-        equipWeapon: "sword",
-    })
-    const [weapons, setWeapons] = useState([
-        {
-            name: "Posion Dagger",
-            damage: "2",
-            isPoision: "1",
-            desc: "This weapon will apply the poison status effect dealing 2 points of damage every time the poisoned entity attacks.",
-        },
-        {
-            name: "Flame Sword",
-            damage: "4",
-            isFire: "1",
-            desc: "This weapon applies fire status effect dealing 2 points of damage every time the burnt entity attacks."
-        }
-    ])
-    const [currentWeapon, setCurrenWeapon] = useState(weapons[0]);
+    // const [character, setCharacter] = useState()
+    // const [weapons, setWeapons] = useState()
+    // const [currentHealth, setCurrentHealth] = useState();
+    // const [currentWeapon, setCurrenWeapon] = useState(weapons[0]);
     // console.log(currentWeapon)
     const [playingMusic, setPlayingMusic] = useState(false);
 
@@ -41,18 +20,25 @@ function Home({ loggedIn }) {
     useEffect(() => {
         axios.get("http://localhost:3001/api/users/login")
         .then(response => {
-            // console.log(response)
+            console.log(response)
             if(!response.data.loggedIn){
                 history.push('/login');
             }
         })
-    }, [])
 
-    const char ={
-        xp: 1000,
-        health: 120,
-        level: 3
-    }
+        // axios.get("http://localhost:3001/api/char/load/1")
+        // .then((response) => {
+        //     console.log("working")
+        //     console.log(response.data)
+        //     console.log(response.data.weapon)
+        //     setCharacter(response.data)
+        //     setWeapons(response.data.weapon)
+        //     setCurrentHealth(response.data.health)
+        //     console.log(character)
+        //     console.log(weapons)
+        //     console.log(currentHealth)
+        // })
+    }, [])
 
     const saveGame = (arr) => {
         
@@ -111,8 +97,7 @@ function Home({ loggedIn }) {
     //     playPause = <button id="stopMusic" onClick={checkMusic}>play</button>
     // }
 
-    const charHealthPer = (character.currentHealth/character.maxHealth)*100
-    // const charEnergyPer = (character.currentEnergy/character.maxEnergy)*100
+    // const charHealthPer = (currentHealth/character.health)*100
 
     return(
         <div id="home">
@@ -120,29 +105,24 @@ function Home({ loggedIn }) {
             </div>
 
             <div id="charInfo">
-                <p id="charName">@{loggedIn}: {character.name}</p>
+                {/* <p id="charName">@{loggedIn}- level: {character.level}</p> */}
                 <div id="health">
                     <p className="charStat">Health: </p> 
                     <div className="statBar">
-                        <div className="statPercent" style={{width: `${charHealthPer}%`}}> </div>
-                        <p className="percent">{charHealthPer}%</p>
+                        {/* <div className="statPercent" style={{width: `${charHealthPer}%`}}> </div> */}
+                        {/* <p className="percent">{charHealthPer}%</p> */}
                     </div>
                 </div>
-
-                {/* <div id="energy">
-                    <p className="charStat">Energy:</p>
-                    <div className="statBar">
-                        <div className="statPercent" style={{width: `${charEnergyPer}%`}}></div>
-                        <p className="percent">{charEnergyPer}%</p>
-                    </div>
-                </div> */}
 
                 <div id="weapon">
                     <p id="charWeapon">Current weapon: </p>
                     <div id="weaponInfo">
-                        <p>{currentWeapon.name}</p>
-                        <p>Weapon damage: {currentWeapon.damage}</p>
-                        <p>Description: {currentWeapon.desc}</p>
+                        {/* <p>{weapons.name}</p>
+                        <p>Weapon damage: {weapons.damage}</p>
+                        {weapons.isVampireic ? <p>Effect: Vampireic</p> : <p></p>}
+                        {weapons.isParalysis ? <p>Effect: Paralysis</p> : <p></p>}
+                        {weapons.isPoison ? <p>Effect: Poison</p> : <p></p>}
+                        {weapons.desc !== null ? <p>Description: {weapons.desc}</p> : <p></p>} */}
                     </div>
                 </div>
             </div>

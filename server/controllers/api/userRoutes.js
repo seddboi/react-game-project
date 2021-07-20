@@ -5,16 +5,16 @@ const bcrypt = require("bcrypt")
 
 const saltRounds = 10;
 
-  router.post("/register", (req, res) => {
+  router.post("/register",  async (req, res) => {
     // console.log("HITTING API USERS POST", req);
     try {
-      bcrypt.hash(req.body.password, saltRounds, async (err, hash) => {
+      // bcrypt.hash(req.body.password, saltRounds, async (err, hash) => {
         const newUserData = await User.create({
         username: req.body.username,
         email: req.body.email,
-        password: hash,
+        password: req.body.password//hash,
         });
-      })
+      // })
 
       // console.log(newUserData);  
       res.send("200");
@@ -79,9 +79,10 @@ router.post("/login", async (req, res) => {
           res.status(500).send({message: "Wrong password or username! "});
         }
       })
-    } else {
+    } 
+    // else {
       
-    }
+    // }
     // else {
     //   res.status(500).send({message: "User doesn't exist!"})
     // }

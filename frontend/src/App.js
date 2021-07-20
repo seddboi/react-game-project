@@ -15,6 +15,9 @@ import axios from 'axios';
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [user, setUser] = useState("");
+    const [character, setCharacter] = useState()
+    const [weapons, setWeapons] = useState()
+    const [currentHealth, setCurrentHealth] = useState();
 
     axios.defaults.withCredentials = true;
     // const history = useBasename(createHistory)({basename: '/'});
@@ -32,6 +35,19 @@ function App() {
                 setLoggedIn(response.data.user.username)
             }
         })
+
+        axios.get("http://localhost:3001/api/char/load/1")
+        .then((response) => {
+            // console.log("working")
+            // console.log(response.data)
+            // console.log(response.data.weapon)
+            setCharacter(response.data)
+            setWeapons(response.data.weapon)
+            setCurrentHealth(response.data.health)
+            // console.log(character)
+            // console.log(weapons)
+            // console.log(currentHealth)
+        })
     },[])
 
     return (
@@ -47,7 +63,7 @@ function App() {
                     <Menu />
                 </Route>
                 <Route exact path="/resume">
-                    <Resume />
+                    <Resume loggedIn={loggedIn}/>
                 </Route>
                 <Route exact path="/settings">
                     <Settings />
@@ -56,7 +72,14 @@ function App() {
                     <Credits />
                 </Route>
                 <Route exact path="/">
-                    <Home loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
+                    <Home 
+                        loggedIn={loggedIn} 
+                        setLoggedIn={setLoggedIn}
+                        character={character}
+                        weapons={weapons}
+                        currentHealth={currentHealth}
+                        setCurrentHealth={setCurrentHealth}
+                    />
                     {/* {loggedIn ? ( <Home loggedIn={loggedIn}/> ) : (<Redirect to="/login" />)} */}
                 </Route>
             </div>

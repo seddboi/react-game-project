@@ -1,7 +1,8 @@
 import React from 'react';
 import "./style.css";
 
-function Resume() {
+function Resume({ loggedIn }) {
+    console.log(loggedIn)
     return(
         <div id="resume">
             <div id="resumeArea">
