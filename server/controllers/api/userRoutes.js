@@ -1,7 +1,9 @@
 const router = require("express").Router();
 const session = require("express-session")
+
 const {User} = require("../../models");
 const bcrypt = require("bcrypt")
+
 
 const saltRounds = 10;
 
@@ -25,6 +27,7 @@ const saltRounds = 10;
     }
   });
 
+
 router.get("/login", (req, res) => {
   try{
     // console.log(req.session)
@@ -36,6 +39,7 @@ router.get("/login", (req, res) => {
     }
   } catch (err) {
     res.status(500).json(err);
+
   }
 });
 
@@ -121,14 +125,25 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// router.delete("/logout", (req, res) => {
-//   if (req.session) {
-//     req.session.destroy(() => {
-//       res.status(204).end();
-//     });
-//   } else {
-//     res.status(404).end();
-//   }
-// });
+
+router.get('/:id/chars', async(req, res) => {
+  try {
+      const userChars = await UserChar.findAll({where: {user_id: req.params.id}});
+      res.status(200).json(userChars);
+  } catch (err) {
+      res.status(500).json(err);
+  }
+});
+
+router.delete("/logout", (req, res) => {
+  if (req.session) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
 
 module.exports = router;
