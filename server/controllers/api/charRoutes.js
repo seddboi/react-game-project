@@ -7,7 +7,9 @@ router.post('/newchar', async(req, res)=> {
     try {
         await UserChar.create({
         where: {user_id: req.session.user_id}
-        })
+        
+        });
+        res.status(200).json({Message: "Ready Player 1"});
     } catch (err) {
     console.log(err);
     res.status(500).json(err);

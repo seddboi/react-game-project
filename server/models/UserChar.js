@@ -19,12 +19,12 @@ module.exports = (sequelize, DataTypes) => {
       xp: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: "15",
+        defaultValue: "0",
       },
       health: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: "15",
+        defaultValue: "30",
       },
       // user_id: {
       //   type: DataTypes.INTEGER,
@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
       // },
       // weapon_id: {
       //   type: DataTypes.INTEGER,
-
+      // }
       //   references: {
       //     model: "weapons",
       //     key: "id",
