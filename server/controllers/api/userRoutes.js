@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const session = require("express-session")
-const {User} = require("../../models");
+const {User, UserChar} = require("../../models");
 
 
   router.post("/register", async (req, res) => {
@@ -21,7 +21,7 @@ const {User} = require("../../models");
   });
 
 
-router.get("/login", (req, res) => {
+router.post("/login", (req, res) => {
   if (req.session.user) {
     res.send({ loggedIn: true, user: req.session.user });
   } else {
@@ -64,6 +64,15 @@ router.post("/login", async (req, res) => {
 	
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.get('/:id/chars', async(req, res) => {
+  try {
+      const userChars = await UserChar.findAll({where: {user_id: req.params.id}});
+      res.status(200).json(userChars);
+  } catch (err) {
+      res.status(500).json(err);
   }
 });
 
