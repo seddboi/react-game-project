@@ -67,12 +67,46 @@
     font-size: 100%;
 }
 
+#weapon {
+    width: 100%;
+    display: flex;
+}
+
+#charWeapon {
+    width: 25%;
+    padding: 1vh 0;
+}
+
+#weaponInfo {
+    width: 75%;
+    padding: 0 1vw;
+}
+
+#weaponInfo p {
+    padding: 1vh 0;
+}
+
 #gameInfo {
     width: 56%;
     background: white;
     border: grey .3rem solid;
     padding: 1% 2%;
     font-size: 130%;
+}
+
+#gameBtn {
+    width: fit-content;
+}
+
+#gameBtn button {
+    padding: 0 1vw;
+    margin: 0 .5vw;
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 100%;
+}
+
+#gameBtn button:hover {
+    cursor: pointer;
 }
 
 #gameInfo h3 {

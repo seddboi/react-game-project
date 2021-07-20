@@ -3,7 +3,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("./../../assets/background/pixelForestPlaceholder.jpg");
+    /* background-image: url("./../../assets/background/pixelForestPlaceholder.jpg"); */
+    /* Gif src http://gph.is/1gr5xVs */
+    background-image: url("https://media.giphy.com/media/n53gX0wavokQE/giphy.gif");
+    background-repeat: repeat;
+    background-position:center;
     background-size: cover;
     font-size: 160%;
 }

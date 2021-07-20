@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
 import './style.css';
@@ -9,6 +9,7 @@ export default function Login(){
 
   const [loginStatus, setLoginStatus] = useState("");
   const [valid, setValid] = useState(true);
+  const [errMessage, setErrMessage] = useState("");
 
   let history = useHistory();
 
@@ -17,7 +18,8 @@ export default function Login(){
       email: email,
       password: password,
     }).then((response) => {
-      // console.log(response)
+      console.log(response)
+      // console.log("working")
       if(response.status === 200){
         history.push('/')
       }
@@ -29,16 +31,18 @@ export default function Login(){
     //   //   console.log("wrong")
     //   //   setLoginStatus(response.data[0].username);
     //   // }
+    setValid(true)
     })
-    .catch(err => {
-      console.log(err.response)
+    .catch((err) => {
+      setErrMessage(err.response.data.message);
+      setValid(false)
     });
   };
 
   const validate = () => {
     if(!valid){
       return(
-      <p id="invalidMessage">Incorrect email or password, please try again</p>
+      <p id="invalidMessage">{errMessage}</p>
       )
     }
   }
@@ -74,7 +78,7 @@ export default function Login(){
         <a className="signupLink" href="/signup"><p className="link">Sign Up</p></a>
       </div>
 
-      <h1>{loginStatus}</h1>
+      {/* <h1>{loginStatus}</h1> */}
     </div>
   )
 }

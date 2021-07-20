@@ -4,8 +4,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("./../../assets/background/pixelForestPlaceholder.jpg");
+    /* background-image: url("./../../assets/background/pixelForestPlaceholder.jpg"); */
+    /* src of gif http://gph.is/1ab9dXG */
+    background-image: url("https://media.giphy.com/media/TRebCjNbc4dIA/giphy.gif"); 
     background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
     font-size: 170%;
 }
 
@@ -18,10 +22,18 @@
 }
 
 .login h1{
-    width: 20%;
+    width:fit-content;
     background-color: rgba(255, 255, 255, .5);
+    
     margin-bottom: 3vh;
     padding: 1vh 1vw;
+}
+
+#invalidMessage {
+    width: fit-content;
+    background-color: rgba(255, 255, 255, .6);
+    padding: 1vh 1vw;
+    color: red;
 }
 
 .loginInput{
@@ -38,7 +50,29 @@
     width: 20%;
     margin: 2vh 0;
     padding: 0;
+    /* position: relative; */
+    /* overflow: hidden; */
 }
+
+/* .loginBtn::after {
+    content: "";
+    background: black;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s;
+} */
+
+/* .loginBtn:active::after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s;
+} */
 
 .signupLink{
     width: fit-content;
