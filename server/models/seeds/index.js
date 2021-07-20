@@ -1,12 +1,28 @@
-const seedDatabase = async() => {
-    await sequelize.sync({ force: true });
+// const User = require("../User")
+// const Weapon = require("../Weapon");
+const userdata = require("./userData")
+const weapondata = require("./weapons")
+const charData = require("./userChar")
 
-    await User.bulkCreate(userData, {
-        individualHooks: true,
-        returning: true,
-    });
+const seedDatabase = async (sequelize, User, Weapon, UserChar) => {
+  await sequelize.sync({ force: true });
 
-    process.exit(0);
+  await User.bulkCreate(userdata, {
+    individualHooks: true,
+    returning: true,
+  });
+  
+  
+  await Weapon.bulkCreate(weapondata, {
+    individualHooks: true,
+    returning: true,
+  });
+
+  await UserChar.bulkCreate(charData,{
+    individualHooks: true,
+    returning: true
+  })
+  console.log("we are done setting up the database");
 };
 
-seedDatabase();
+module.exports = seedDatabase;
