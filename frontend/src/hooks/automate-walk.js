@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import randomPosition from './randomize-position';
 
 function AutomateWalk(frames) {
    const [direction, setDirection] = useState(0);
@@ -13,7 +14,9 @@ function AutomateWalk(frames) {
     // which states that the 'Uncaught TypeError: Cannot read property 'y' of undefined
     // at move (automate-walk.js:75)
     // at automate-walk.js:62'
-   const [position, setPosition] = useState();
+   const [position, setPosition] = useState({x: 240, y: 240});
+   console.log(position);
+// {x: randomPosition(51, 419), y: randomPosition(71, 409)}   
   
    function randomPosition() {
         var minX = 50;
@@ -21,9 +24,9 @@ function AutomateWalk(frames) {
         var minY = 70;
         var maxY= 410;
 
-        const px = Math.floor(Math.random() * (maxX - minX) + minX)
-        const py = Math.floor(Math.random() * (maxY - minY) + minY)
-        console.log(px, py)
+        const px = Math.floor(Math.random() * (maxX - minX) + minX + 1)
+        const py = Math.floor(Math.random() * (maxY - minY) + minY + 1)
+        // console.log(px, py)
         
         setPosition({x:px, y:py});
         //return;
@@ -40,7 +43,6 @@ function AutomateWalk(frames) {
        left: {x: -pixels, y: 0},
        right: {x: pixels, y: 0},
        up: {x: 0, y: -pixels},
-       shift: {x: 0, y: 0},
    };
    
 
@@ -62,7 +64,7 @@ function AutomateWalk(frames) {
             // "vector" is the same as direction being passed below; just passes 'left', 'right' , etc.
             //  console.log(moveDirections[direction])
             // console.log(vector);
-            if (moveDirections[direction] === vector) move(direction)
+            // if (moveDirections[direction] === vector) move(direction)
 
             return moveDirections[direction]
         });
@@ -77,27 +79,30 @@ function AutomateWalk(frames) {
         // console.log(moveDirections[passedDirection] !== direction)
         if(position.y > 410) {
             setPosition({...position, y: 410})
-        }
-        if(position.y < 70) {
+            console.log('maxY', position.y)
+        } else if(position.y < 70) {
             setPosition({...position, y: 70})
-        }
-        if(position.x > 420) {
+            console.log('minY', position.y)
+        } else if(position.x > 420 ) {
             setPosition({...position, x: 420})
-        }
-        if(position.x < 50) {
+            console.log('maxX', position.x)
+        } else if(position.x < 50) {
             setPosition({...position, x: 50})
-        }
-        if (moveDirections[passedDirection] !== direction) {
+            console.log('minX', position.x)
+        } else if (moveDirections[passedDirection] !== direction) {
             setPosition( (vector) => ({
                 x: vector.x + 0,
                 y: vector.y + 0,
-            }))}
+            }))
+            console.log('no move', position.x, position.y)
+        }
         else {
             setPosition( (vector) => ({
                 x: vector.x + adjustPosition[passedDirection].x,
                 y: vector.y + adjustPosition[passedDirection].y,
         
             }));
+            console.log('move', position.x, position.y)
         }
         // console.log(position);
     };

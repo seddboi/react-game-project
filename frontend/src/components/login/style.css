@@ -1,0 +1,110 @@
+.login{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url("./../../assets/background/pixelForestPlaceholder.jpg"); */
+    /* src of gif http://gph.is/1ab9dXG */
+    background-image: url("https://media.giphy.com/media/TRebCjNbc4dIA/giphy.gif"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    font-size: 170%;
+}
+
+#loginArea {
+    width: 80%;
+    margin: auto;
+    padding: 3vh 2vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.login h1{
+    width:fit-content;
+    background-color: rgba(255, 255, 255, .5);
+    
+    margin-bottom: 3vh;
+    padding: 1vh 1vw;
+}
+
+#invalidMessage {
+    width: fit-content;
+    background-color: rgba(255, 255, 255, .6);
+    padding: 1vh 1vw;
+    color: red;
+}
+
+.loginInput{
+    width: 40%;
+    margin: 1vh 0;
+    padding: 1vh 1vw;
+    font-size: 80%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: grey .1rem solid;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+.loginBtn {
+    width: 20%;
+    margin: 2vh 0;
+    padding: 0;
+    /* position: relative; */
+    /* overflow: hidden; */
+}
+
+/* .loginBtn::after {
+    content: "";
+    background: black;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s;
+} */
+
+/* .loginBtn:active::after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s;
+} */
+
+.signupLink{
+    width: fit-content;
+    align-items: center;
+}
+
+.link {
+    float: left;
+    width:fit-content;
+    background-color: rgba(255, 255, 255, .5);
+    color: black;
+    text-align: center;
+}
+
+.link:hover{
+    color: blue;
+}
+
+#loginBtn{
+    width: 20%;
+    padding: 1vh 0;
+    margin: 3vh 0;
+    font-size: 80%;
+    background-color: rgba(255, 255, 255, .6);
+    border: grey .1rem solid;
+}
+
+#loginBtn:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, .8);
+}
+
+#loginBtn:active {
+    background-color: rgba(255, 255, 255, .5);
+}

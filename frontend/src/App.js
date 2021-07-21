@@ -1,58 +1,90 @@
-import React from 'react';
-// import Matter from 'matter-js';
-import { GameEngine } from 'react-game-engine';
-// ------------------------------------------------------------------------------
-// These are all of the personally added components
-// import CreateGame from './components/CreateGame';
-import User from './components/User/user';
-import Image from './components/Map/arena-files/arena1.png'
-import Enemy from './components/EnemyContainer/enemycontainer'
-// import Walls from './hooks/create-walls';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import './assets/css/body.css'
+// import { createH, useBasename } from 'history';
 
-
-// This is all code from a React Native code along I found online 
-// *****DOES NOT WORK YET*****
-// 
-// const width = 700;
-// const height = 500;
-
-// const boxSize = Math.trunc(Math.max(width, height) * 0.075);
-// const engine = Matter.Engine.create({ enableSleeping: false });
-// const world = engine.world;
-
-// const initialBox = Matter.Bodies.rectangle(width, height, boxSize, boxSize);
-// const floor = Matter.Bodies.rectangle(width, height - boxSize / 2, width, boxSize, { isStatic: true});
-
-// Matter.World.add(world, [initialBox, floor]);
-
-// const Physics = (entities, {time}) => {
-//   let engine = entities['physics'].engine;
-  
-//   Matter.Engine.update(engine, time.delta);
-//   return entities;
-
-// };
+import Signup from './components/signup/Signup';
+import Login from './components/login/Login';
+import Home from './components/Home/Home';
+import Menu from './components/Menu/Menu';
+import Resume from './components/resume/resume';
+import Settings from './components/Setting/Settings';
+import Credits from './components/Credit/Credits';
+import axios from 'axios';
 
 function App() {
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [user, setUser] = useState("");
+    const [character, setCharacter] = useState()
+    const [weapons, setWeapons] = useState()
+    const [currentHealth, setCurrentHealth] = useState();
 
-  return (
-    <div id='map'>
-      <GameEngine
-        className='map'
-        style={{width: 500, height: 500, backgroundImage: `url(${Image})`, position: 'relative'}}
-        // systems={[Walls]}
-        entities={{character1:{x: 32, y: 32, renderer: <User />}, enemy1: {x:32, y:32, renderer: <Enemy />}, enemy2: {x:32, y:32, renderer: <Enemy />}, enemy3: {x:32, y:32, renderer: <Enemy />}}}
-        
-      >
-        {/* <Enemy />  */}
-      </GameEngine>
-      {/* <CreateGame /> */}
-    </div>    
-  );
+    axios.defaults.withCredentials = true;
+    // const history = useBasename(createHistory)({basename: '/'});
+    // function loginUser() {
+    //     // for now console out username and password
+    //     const username = document.getElementsByClassName("username").textcontent;
+    //     const password = document.getElementsByClassName("password").textcontent;
+    //     console.log(username, password);
+    // }
+
+    useEffect(() => {
+        axios.get("http://localhost:3001/api/users/login").then((response) => {
+            // console.log(response.data.user.email)
+            if(response.data.loggedIn === true){
+                setLoggedIn(response.data.user.username)
+            }
+        })
+
+        axios.get("http://localhost:3001/api/char/load/1")
+        .then((response) => {
+            // console.log("working")
+            // console.log(response.data)
+            // console.log(response.data.weapon)
+            setCharacter(response.data)
+            setWeapons(response.data.weapon)
+            setCurrentHealth(response.data.health)
+            // console.log(character)
+            // console.log(weapons)
+            // console.log(currentHealth)
+        })
+    },[])
+
+    return (
+        <Router> {/*history={history}>*/}
+            <div>
+                <Route exact path="/signup">
+                    <Signup />
+                </Route>
+                <Route exact path="/login">
+                    <Login />
+                </Route>
+                <Route exact path="/menu">
+                    <Menu />
+                </Route>
+                <Route exact path="/resume">
+                    <Resume loggedIn={loggedIn}/>
+                </Route>
+                <Route exact path="/settings">
+                    <Settings />
+                </Route>
+                <Route exact path="/credits">
+                    <Credits />
+                </Route>
+                <Route exact path="/">
+                    <Home 
+                        loggedIn={loggedIn} 
+                        setLoggedIn={setLoggedIn}
+                        character={character}
+                        weapons={weapons}
+                        currentHealth={currentHealth}
+                        setCurrentHealth={setCurrentHealth}
+                    />
+                    {/* {loggedIn ? ( <Home loggedIn={loggedIn}/> ) : (<Redirect to="/login" />)} */}
+                </Route>
+            </div>
+        </Router>
+    )
 }
 
 export default App;
-
-// {},
-//},

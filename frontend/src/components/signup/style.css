@@ -1,0 +1,105 @@
+.register{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url("./../../assets/background/pixelForestPlaceholder.jpg"); */
+    /* Gif src http://gph.is/1gr5xVs */
+    background-image: url("https://media.giphy.com/media/n53gX0wavokQE/giphy.gif");
+    background-repeat: repeat;
+    background-position:center;
+    background-size: cover;
+    font-size: 160%;
+}
+
+.signupArea{
+    width: 80%;
+    margin: auto;
+    padding: 0 1vw;
+    padding: 3vh 2vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.signupArea h1{
+    width: 25%;
+    background-color: rgba(255, 255, 255, .5);
+    margin-bottom: 3vh;
+    padding: 1vh 1vw;
+}
+
+#invalidMessage {
+    width: fit-content;
+    padding: 0 1vw;
+    font-size: 70%;
+    color: red;
+    background-color: rgba(255, 255, 255, .7);
+}
+
+.signupInput {
+    width: 40%;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+.signupInput {
+    margin: 1vh 0;
+    padding: 1vh 1vw;
+    font-size: 80%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: grey .1rem solid;
+}
+
+.signupBtn{
+    width: 15%;
+    text-align: center;
+    margin: 2vh 0;
+    padding: 0;
+}
+
+#signupLinkBtn{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1vh 0;
+}
+
+.loginLink{
+    width: fit-content;
+    align-items: center;
+}
+
+.link {
+    padding: 0 2vw;
+    float: left;
+    width: 5%;
+    margin: 1vh 0;
+    background-color: rgba(255, 255, 255, .5);
+
+}
+
+.link a{
+    text-decoration: none;
+    color: black;
+}
+
+.link a:hover{
+    color: blue;
+}
+
+#signupBtn{
+    width: 20%;
+    padding: 1vh 0;
+    margin: 3vh 0;
+    font-size: 80%;
+    background-color: rgba(255, 255, 255, .6);
+    border: grey .1rem solid;
+}
+
+#signupBtn:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, .8);
+}
+
+#signupBtn:active {
+    background-color: rgba(255, 255, 255, .5);
+}
