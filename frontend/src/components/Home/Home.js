@@ -104,7 +104,7 @@ function Home({ loggedIn, character, weapons, currentHealth, setCurrentHealth })
         <div id="home">
             <div id="gameArea">   
                 <CreateGame />
-                
+           
             </div>
 
             <div id="charInfo">
