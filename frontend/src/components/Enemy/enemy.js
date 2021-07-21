@@ -1,11 +1,11 @@
 import React from 'react';
-import Image from './Skins/c1.png';
+import Image from './Skins/enemy1.png';
 
-export function Character({data, position}) {
+export function Enemy({data, position}) {
     const {height, width, x, y} = data;
 
     return (
-        <div className='character' style={
+        <div className='enemy' style={
             {
                 backgroundImage: `url(${Image})`,
                 height: `${height}px`,
@@ -21,4 +21,5 @@ export function Character({data, position}) {
     )
 }
 
-export default Character;
+export default Enemy;
+

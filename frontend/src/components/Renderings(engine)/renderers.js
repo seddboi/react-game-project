@@ -1,4 +1,5 @@
 import Image from '../Character/Skins/c1.png';
+import Image from '../Map/arena-files/arena1.png';
 import React, { PureComponent } from "react";
 
 class Box extends PureComponent {

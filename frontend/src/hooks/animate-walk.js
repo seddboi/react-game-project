@@ -16,6 +16,9 @@ function AnimateWalk(frames) {
        shift: {x: 0, y: 0},
    };
 
+//    console.log(direction);
+    // console.log(animation);
+
     function walkingAnimation(direction) {    
         setAnimation( (animation) => {
             if (animation < frames - 1) {
@@ -29,46 +32,46 @@ function AnimateWalk(frames) {
 
         setDirection((vector) => {
             // "vector" is the same as direction being passed below; just passes 'left', 'right' , etc.
-            console.log(vector);
-            // console.log(direction)
-            console.log(moveDirections[direction])
-            if (moveDirections[direction] !== vector) move(direction);
-            // if (moveDirections[direction] !== vector) {
-            //     return vector
-            // } else {
-            //     move(direction)
-            // }
+            //  console.log(moveDirections[direction])
+            // console.log(vector);
+            if (moveDirections[direction] === vector) move(direction)
 
             return moveDirections[direction]
         });
     };
 
-    function move(vector) {
-        //console.log(position);
-        // console.log(direction);
-        if (position.x < 50 || position.x > 420 || position.y < 70 || position.y > 410) {
-            // console.log(position, 'This is the position')
-            return position
-        } else if (direction !== vector) {
-            setPosition( (vector) => ({
-                x: vector.x + adjustPosition[direction].x,
-                y: vector.y + adjustPosition[direction].y,
-        
-            }));
-            
-            console.log('adding zero')
-        } else {
+    function move(passedDirection) {
+        // console.log(moveDirections[passedDirection])
+        // console.log(direction)
+        // if (position.x < 50 || position.x > 420 || position.y < 70 || position.y > 405) {
+        //     return position
+        // }
+        // console.log(moveDirections[passedDirection] !== direction)
+        if(position.y > 410) {
+            setPosition({...position, y: 410})
+        }
+        if(position.y < 70) {
+            setPosition({...position, y: 70})
+        }
+        if(position.x > 420) {
+            setPosition({...position, x: 420})
+        }
+        if(position.x < 50) {
+            setPosition({...position, x: 50})
+        }
+        if (moveDirections[passedDirection] !== direction) {
             setPosition( (vector) => ({
                 x: vector.x + 0,
                 y: vector.y + 0,
+            }))}
+        else {
+            setPosition( (vector) => ({
+                x: vector.x + adjustPosition[passedDirection].x,
+                y: vector.y + adjustPosition[passedDirection].y,
+        
             }));
-            console.log("we are here")
         }
-
-        // if ((position.x > 50 && position.x < 420) || (position.y > 70 && position.y < 405)) {
-        //     console.log(position, 'This is the position')
-            
-        // } 
+        // console.log(position);
     };
     // console.log(move(direction));
 
