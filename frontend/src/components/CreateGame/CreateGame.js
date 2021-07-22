@@ -36,18 +36,16 @@ import Enemy from '../EnemyContainer/enemycontainer'
 function CreateGame() {
 
   return (
-    <div id='map'>
-      <GameEngine
-        className='map'
-        style={{width: 500, height: 500, backgroundImage: `url(${Image})`, position: 'relative'}}
+    <GameEngine
+      className='map'
+      style={{width: 500, height: 500, backgroundImage: `url(${Image})`, position: 'relative'}}
         // systems={[Walls]}
-        entities={{character1:{x: 32, y: 32, health: 100, renderer: <User />}, enemy1: {x:32, y:32, health: 100, renderer: <Enemy />}, enemy2: {x:32, y:32, renderer: <Enemy />}, enemy3: {x:32, y:32, renderer: <Enemy />}}}
+      entities={{character1:{x: 32, y: 32, health: 100, renderer: <User />}, enemy1: {x:32, y:32, health: 100, renderer: <Enemy />}, enemy2: {x:32, y:32, renderer: <Enemy />}, enemy3: {x:32, y:32, renderer: <Enemy />}}}
         
-      >
+    >
         
-      </GameEngine>
+    </GameEngine>
       
-    </div>    
   );
 }
 // 
