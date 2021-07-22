@@ -1,6 +1,6 @@
 import React, { useState, useEffect,  } from 'react';
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import "./style.css";
 
@@ -9,41 +9,20 @@ import CreateGame from '../CreateGame/CreateGame';
 
 function Home({ loggedIn, character, weapons, currentHealth, setCurrentHealth }) {
     const testAudio = new Audio(music);
-    // const [character, setCharacter] = useState()
-    // const [weapons, setWeapons] = useState()
-    // const [currentHealth, setCurrentHealth] = useState();
-    // const [currentWeapon, setCurrenWeapon] = useState(weapons[0]);
-    // console.log(currentWeapon)
     const [playingMusic, setPlayingMusic] = useState(false);
 
     let history = useHistory();
+    const location = useLocation();
 
     useEffect(() => {
         axios.get("http://localhost:3001/api/users/login")
         .then(response => {
-            console.log(response)
+            // console.log(response)
             if(!response.data.loggedIn){
                 history.push('/login');
             }
         })
-
-        // axios.get("http://localhost:3001/api/char/load/1")
-        // .then((response) => {
-        //     console.log("working")
-        //     console.log(response.data)
-        //     console.log(response.data.weapon)
-        //     setCharacter(response.data)
-        //     setWeapons(response.data.weapon)
-        //     setCurrentHealth(response.data.health)
-        //     console.log(character)
-        //     console.log(weapons)
-        //     console.log(currentHealth)
-        // })
     }, [])
-
-    const saveGame = (arr) => {
-        
-    }
 
     const musicPlayer = () => {
         if(playingMusic){
@@ -81,24 +60,7 @@ function Home({ loggedIn, character, weapons, currentHealth, setCurrentHealth })
         })
     }
 
-    // const checkMusic = async () => {
-    //     if (!backgroundAudio.playing){
-    //         startMusic();
-    //         console.log("playing music")
-    //     } else {
-    //         stopMusic();
-    //         console.log("pausing music.")
-    //     }
-    // }
-
-    // let playPause;
-    // if(backgroundAudio.playing){
-    //     playPause = <button id="stopMusic" onClick={checkMusic}>pause</button>
-    // } else{
-    //     playPause = <button id="stopMusic" onClick={checkMusic}>play</button>
-    // }
-
-    // const charHealthPer = (currentHealth/character.health)*100
+    const charHealthPer = (location.currentHealth/location.character.health)*100
 
     return(
         <div id="home">
@@ -108,24 +70,24 @@ function Home({ loggedIn, character, weapons, currentHealth, setCurrentHealth })
             </div>
 
             <div id="charInfo">
-                {/* <p id="charName">@{loggedIn}- level: {character.level}</p> */}
+                <p id="charName">@{loggedIn}- level: {location.character.level}</p>
                 <div id="health">
                     <p className="charStat">Health: </p> 
                     <div className="statBar">
-                        {/* <div className="statPercent" style={{width: `${charHealthPer}%`}}> </div> */}
-                        {/* <p className="percent">{charHealthPer}%</p> */}
+                        <div className="statPercent" style={{width: `${charHealthPer}%`}}> </div>
+                        <p className="percent">{charHealthPer}%</p>
                     </div>
                 </div>
 
                 <div id="weapon">
                     <p id="charWeapon">Current weapon: </p>
                     <div id="weaponInfo">
-                        {/* <p>{weapons.name}</p>
-                        <p>Weapon damage: {weapons.damage}</p>
-                        {weapons.isVampireic ? <p>Effect: Vampireic</p> : <p></p>}
-                        {weapons.isParalysis ? <p>Effect: Paralysis</p> : <p></p>}
-                        {weapons.isPoison ? <p>Effect: Poison</p> : <p></p>}
-                        {weapons.desc !== null ? <p>Description: {weapons.desc}</p> : <p></p>} */}
+                        <p>{location.weapons.name}</p>
+                        <p>Weapon damage: {location.weapons.damage}</p>
+                        {location.weapons.isVampireic ? <p>Effect: Vampireic</p> : <p></p>}
+                        {location.weapons.isParalysis ? <p>Effect: Paralysis</p> : <p></p>}
+                        {location.weapons.isPoison ? <p>Effect: Poison</p> : <p></p>}
+                        {location.weapons.desc !== null ? <p>Description: {location.weapons.desc}</p> : <p></p>}
                     </div>
                 </div>
             </div>
@@ -150,10 +112,10 @@ function Home({ loggedIn, character, weapons, currentHealth, setCurrentHealth })
                 <button onClick={musicPlayer}>{playingMusic ? "pause" : "play"}</button>
             </div> */}
 
-            <div id="playMusic">
+            {/* <div id="playMusic">
                 <button id="play" onClick={startMusic}>play</button>
                 <button id="pause" onClick={stopMusic}>pause</button>
-            </div>
+            </div> */}
         </div>
     )
 }

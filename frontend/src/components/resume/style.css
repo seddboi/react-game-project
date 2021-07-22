@@ -20,16 +20,25 @@
     padding: 1vh 2vw;
     display: flex;
     border: grey .2rem solid;
+    max-height: 30vh;
 }
 
 .fileInfo {
     width: 70%;
+    display: flex;
 }
 
 .fileBtn {
     width: 40%;
     display: flex;
     justify-content: center;
+}
+
+.info{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-right: 2vw;
 }
 
 .infoFile {
