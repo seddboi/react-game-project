@@ -67,7 +67,7 @@ router.post("/login", async (req, res) => {
      console.log(user)
     if(user){
       bcrypt.compare(req.body.password, user.password, (error, response) => {
-        // console.log("working")
+        // console.log(user.id)
         if (response){
           req.session.userId = user;
           console.log(req.session.userId)

@@ -7,7 +7,7 @@ export default function Login(){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [loginStatus, setLoginStatus] = useState("");
+  // const [loginStatus, setLoginStatus] = useState("");
   const [valid, setValid] = useState(true);
   const [errMessage, setErrMessage] = useState("");
 
@@ -21,20 +21,13 @@ export default function Login(){
       console.log(response)
       // console.log("working")
       if(response.status === 200){
-        history.push('/')
+        history.push('/menu')
       }
-    //   // if (response.data.message) {
-    //   //   console.log(response.data.message)
-    //   //   console.log("correct")
-    //   //   setLoginStatus(response.data.message);
-    //   // } else {
-    //   //   console.log("wrong")
-    //   //   setLoginStatus(response.data[0].username);
-    //   // }
     setValid(true)
     })
     .catch((err) => {
       setErrMessage(err.response.data.message);
+      // setErrMessage(err.response)
       setValid(false)
     });
   };
