@@ -15,6 +15,17 @@
     border: grey .3rem solid;
     margin: 1vh 0;
     background-image: url("./../../assets/background/pixelForestPlaceholder.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#innerplacement {
+    height: 500px;
+    width: 500px;
+    
+    border: grey .3rem solid;
+    background-color: grey;
 }
 
 #charInfo {

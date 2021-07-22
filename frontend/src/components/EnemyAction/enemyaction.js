@@ -1,12 +1,12 @@
 import React from 'react';
-import Character from '../Character/Character';
+import Enemy from '../Enemy/enemy'
 
-function CharacterAction({data, position={x: 0, y: 0}, animation , direction}) {
+function EnemyAction({data, position={x: 0, y: 0}, animation , direction}) {
     const {height, width} = data;
     //console.log(position);
     return (
         <div>
-            <Character data = {
+            <Enemy data = {
                 {
                     height: 32,
                     width: 32,
@@ -18,4 +18,4 @@ function CharacterAction({data, position={x: 0, y: 0}, animation , direction}) {
     )
 };
 
-export default CharacterAction;
+export default EnemyAction;

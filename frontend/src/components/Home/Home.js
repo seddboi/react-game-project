@@ -5,6 +5,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import "./style.css";
 
 import music from "./../../assets/music/2019-06-14_-_Warm_Light_-_David_Fesliyan.mp3";
+import CreateGame from '../CreateGame/CreateGame';
 
 function Home({ loggedIn, character, weapons, currentHealth, setCurrentHealth }) {
     const testAudio = new Audio(music);
@@ -63,7 +64,9 @@ function Home({ loggedIn, character, weapons, currentHealth, setCurrentHealth })
 
     return(
         <div id="home">
-            <div id="gameArea">
+            <div id="gameArea">   
+                <CreateGame />
+           
             </div>
 
             <div id="charInfo">

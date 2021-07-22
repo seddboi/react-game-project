@@ -20,13 +20,15 @@ router.post('/newchar', async(req, res)=> {
 
 router.put('/save/:id', async(req, res) => {
     try {
-        
+    //    const id = await UserChar.findByPk(req.params.id)
         await UserChar.update ({
             xp: req.body.xp,
             health: req.body.health,
             level: req.body.level,
             weapon_id: req.body.weapon_id
-        }, {where: {id: req.body.id}}) 
+        }, {where: {id: req.params.id}}) 
+
+        res.status(200).json({message: "Save Succesful"});
     }catch (err) {
         res.status(400).json(err);
     }
