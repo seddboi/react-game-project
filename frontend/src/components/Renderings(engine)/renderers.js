@@ -1,8 +1,28 @@
 import Image from '../Character/Skins/c1.png';
-import Image from '../Map/arena-files/arena1.png';
 import React, { PureComponent } from "react";
 
-class Box extends PureComponent {
+class User extends PureComponent {
+  render() {
+    const size = 32;
+    const position = {x: this.props.position.x, y: this.props.position.y};
+    // const animation;
+    // const direction;
+    return (
+      <div style={{
+        backgroundImage: `url(${Image})`,
+        height: `${size}px`,
+        width: `${size}px`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: `-${x}px -${y}px`,
+        position: 'absolute',
+        top: position.x, 
+        left: position.y,
+    }} />
+    );
+  }
+}
+
+class Enemy extends PureComponent {
   render() {
     const size = 32;
     const x = this.props.x - size / 2;
@@ -13,4 +33,4 @@ class Box extends PureComponent {
   }
 }
 
-export { Box };
+export { User, Enemy };

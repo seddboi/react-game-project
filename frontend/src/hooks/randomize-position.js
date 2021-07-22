@@ -3,3 +3,5 @@ export default function randomIntFromInterval(min, max) { // min and max include
     return Math.floor(Math.random() * (max - min + 1) + min)
   };
 
+
+  

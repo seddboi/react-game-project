@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 // import Matter from 'matter-js';
 import { GameEngine } from 'react-game-engine';
 // ------------------------------------------------------------------------------
 // These are all of the personally added components
 // import CreateGame from './components/CreateGame';
-import User from '../User/user';
+// import User from '../User/user';
+import {User} from '../Renderings(engine)/renderers';
 import Image from '../Map/arena-files/arena1.png'
-import Enemy from '../EnemyContainer/enemycontainer'
+// import Enemy from '../EnemyContainer/enemycontainer'
+import {Enemy} from '../Renderings(engine)/renderers';
+import {AnimateWalk} from '../Systems(engine)/systems';
 // import Walls from './hooks/create-walls';
 
 
@@ -33,22 +36,50 @@ import Enemy from '../EnemyContainer/enemycontainer'
 
 // };
 
-function CreateGame() {
+// function CreateGame() {
 
-  return (
-    <div id='map'>
-      <GameEngine
-        className='map'
-        style={{width: 500, height: 500, backgroundImage: `url(${Image})`, position: 'relative'}}
-        // systems={[Walls]}
-        entities={{character1:{x: 32, y: 32, health: 100, renderer: <User />}, enemy1: {x:32, y:32, health: 100, renderer: <Enemy />}, enemy2: {x:32, y:32, renderer: <Enemy />}, enemy3: {x:32, y:32, renderer: <Enemy />}}}
-        
-      >
-        
-      </GameEngine>
+//   return (
+//     <div id='map'>
+//       <GameEngine
+//         className='map'
+//         style={{width: 500, height: 500, backgroundImage: `url(${Image})`, position: 'relative'}}
+//         systems={[AnimateWalk]}
+//         entities={
+//           {
+//           character1:{x: 32, y: 32, renderer: <User />}, 
+//           enemy1: {x:32, y:32, renderer: <Enemy />}, 
+//           enemy2: {x:32, y:32, renderer: <Enemy />}, 
+//           enemy3: {x:32, y:32, renderer: <Enemy />}}}
+//       >
       
-    </div>    
-  );
+//       </GameEngine>
+      
+//     </div>    
+//   );
+// }
+
+// ---------------------------------------------------------------------------
+// TEST DOCUMENTATION CODE TSUFF
+
+export default class CreateGame extends PureComponent {
+  render() {
+    return (
+      <GameEngine
+      style={{width: 500, height: 500, backgroundImage: `url(${Image})`, position: 'relative'}}
+      // systems={[AnimateWalk]}
+      entities={
+                {
+                character1:{x: 32, y: 32, renderer: <User />}, 
+                enemy1: {x:32, y:32, renderer: <Enemy />}, 
+                enemy2: {x:32, y:32, renderer: <Enemy />}, 
+                enemy3: {x:32, y:32, renderer: <Enemy />}}}>
+
+      </GameEngine>
+    );
+  }
 }
-// 
-export default CreateGame;
+
+// ---------------------------------------------------------------------------
+
+
+export {CreateGame}

@@ -15,7 +15,7 @@ function AutomateWalk(frames) {
     // at move (automate-walk.js:75)
     // at automate-walk.js:62'
    const [position, setPosition] = useState({x: 240, y: 240});
-   console.log(position);
+//    console.log(position);
 // {x: randomPosition(51, 419), y: randomPosition(71, 409)}   
   
    function randomPosition() {
@@ -24,8 +24,8 @@ function AutomateWalk(frames) {
         var minY = 70;
         var maxY= 410;
 
-        const px = Math.floor(Math.random() * (maxX - minX) + minX + 1)
-        const py = Math.floor(Math.random() * (maxY - minY) + minY + 1)
+        const px = Math.round((Math.random()*(maxX-minX)+minX)/10)*10;
+        const py = Math.round((Math.random()*(maxY-minY)+minY)/10)*10;
         // console.log(px, py)
         
         setPosition({x:px, y:py});
